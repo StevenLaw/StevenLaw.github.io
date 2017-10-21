@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Silly Math Nonsense</title>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+        <style>
+            .meterLabel {
+                display: inline-block;
+                width: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Math!</h1>
+        <fieldset>
+            <div>
+                <input id="varA" class="variable" type="number"/>
+            </div>
+            <div>
+                <input id="varB" class="variable" type="number"/>
+            </div>
+            <div>
+                <select id="operator">
+                    <option value=""></option>
+                    <option value="addition">Addition</option>
+                    <option value="subtraction">Subtraction</option>
+                    <option value="multiplication">Multiplication</option>
+                    <option value="division">Division</option>
+                    <option value="concat">Concatenation</option>
+                </select>
+            </div>
+            <div id="result"/>
+        </fieldset>
+        
+        <fieldset>
+            <div>
+                <div class="meterLabel">
+                    <label for="meterValue">Value:</label>
+                </div>
+                <input id="meterValue" class="meterVar" type="number"/>
+            </div>
+            <div>
+                <div class="meterLabel">
+                    <label for="meterMin">Min:</label>
+                </div>
+                <input id="meterMin" class="meterVar" type="number"/>
+            </div>
+            <div>
+                <div class="meterLabel">
+                    <label for="meterMax">Max:</label>
+                </div>
+                <input id="meterMax" class="meterVar" type="number"/>
+            </div>
+            <div>
+                <meter id="meter"/>
+            </div>
+        </fieldset>
+
+        <script>
+            $(document).ready(function () {
+                $("input.variable").change(update);
+                $("#operator").change(update);
+                $("input.meterVar").change(function(){
+                    var value = parseInt($("#meterValue").val()),
+                        min = parseInt($("#meterMin").val()),
+                        max = parseInt($("#meterMax").val());
+                    if (!(isNaN(value) || isNaN(min) || isNaN(max)))
+                        {
+                            $("#meter").attr("value", value);
+                            $("#meter").attr("min", min);
+                            $("#meter").attr("max", max);
+                        }
+                });
+            });
+
+            function update() {
+                var a = parseInt($("#varA").val()),
+                    b = parseInt($("#varB").val())
+                    c = "";
+                switch($("#operator").val()){
+                    case "":
+                        c = "";
+                         break;
+                    case "addition":
+                        c = a + b;
+                        break;
+                    case "subtraction":
+                        c = a - b;
+                        break;
+                    case "multiplication":
+                        c = a * b;
+                        break;
+                    case "division":
+                        c = a / b;
+                        break;
+                    case "concat":
+                        c = $("#varA").val() + $("#varB").val();
+                }
+                $("#result").text(c);
+            }
+        </script>
+    </body>
+</html>
