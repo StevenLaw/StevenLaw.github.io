@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open csv Tests</title>
+</head>
+<body>
+  <h1>Open csv Tests</h1>
+  <table>
+    <thead>
+        <tr>
+            <th>Link Method</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Simple Link</td>
+            <td>
+              <a href="MOCK_DATA.csv">Open Mock Data In Same Tab</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Target _blank Link</td>
+            <td>
+                <a href="MOCK_DATA.csv" target="_blank">Open Mock Data In New Tab</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Javascript Assign</td>
+            <td>
+              <a href="#" onclick="window.location.assign('MOCK_DATA.csv');">Assign Link</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Javascript Open</td>
+            <td>
+              <a href="#" onclick="window.open('MOCK_DATA.csv');">Open Link</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
